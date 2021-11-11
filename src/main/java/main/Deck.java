@@ -46,4 +46,8 @@ public class Deck {
             }
         }
     }
+
+    public void shuffle() {
+        // Added to test if develop remote branch working
+    }
 }
