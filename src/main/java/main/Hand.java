@@ -5,21 +5,26 @@
  *
  * Name: Jake Etzler
  * Section: 01 - 8:30
- * Date: 11/8/21
- * Time: 9:19 AM
+ * Date: 11/11/21
+ * Time: 4:22 PM
  *
  * Project: csci205_final_project
  * Package: main
- * Class: Main
+ * Class: Hand
  *
- * Description: Hello World!
+ * Description:
  *
  * ****************************************
  */
 package main;
 
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
+
+/**
+ * A class to represent an instance of a poker hand
+ *
+ * @author - Jake Etzler, **add your name when you work on it**
+ */
+public class Hand {
+
+
 }
