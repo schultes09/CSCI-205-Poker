@@ -25,29 +25,5 @@ package main;
  */
 public class Deck {
 
-    /** Size of a deck of cards */
-    private final int DECK_SIZE = 52;
 
-    Card[] deck = new Card[DECK_SIZE];
-
-    /**
-     * Constructor to build a deck of valid cards
-     *
-     * @throws InvalidCardException - Exception thrown if invalid card is trying to be created
-     */
-    public Deck() throws InvalidCardException {
-
-        int i = 0;
-        for (int s = 1; s <= 4; s++) {
-            for (int r = 1; r <= 13; r++) {
-                Card card = new Card(s, r);
-                deck[i] = card;
-                i++;
-            }
-        }
-    }
-
-    public void shuffle() {
-        // Added to test if develop remote branch working
-    }
 }
