@@ -34,11 +34,11 @@ public class Card implements Comparable<Card>{
         this.suit = suit;
     }
 
-    public int getCardValue(){
-        return value;
+    public String getCard(){
+        return this.suit + " " + this.value;
     }
 
-    public void setCardValue(int cardValue){
+    /*public void setCardValue(int cardValue){
         if (cardValue>10 && cardValue<14){
             value = 10;
         }
@@ -48,8 +48,12 @@ public class Card implements Comparable<Card>{
         else {
             value = cardValue;
         }
-    }
+    }*/
 
+    /**
+     * @param other - other Card object to be compared
+     * @return - int designating which Object has a higher value
+     */
     @Override
     public int compareTo(Card other) {
         if (this.value > other.value) {

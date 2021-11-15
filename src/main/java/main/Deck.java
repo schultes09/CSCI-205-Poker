@@ -18,6 +18,8 @@
  */
 package main;
 
+import java.util.Random;
+
 /**
  * A class to represent a functioning deck of cards
  *
@@ -25,14 +27,50 @@ package main;
  */
 public class Deck {
 
-    public Card[] deck;
+    private final int DECK_SIZE = 52;
 
-    int count = 0;
+    private final int SHUFFLE_COUNT = 1000;
+
+    private Card[] deck = new Card[DECK_SIZE];
+    private Random rng = new Random();
+
+    private int dealIndex;
+
+
+    /**
+     * Constructor for ordered deck of Card objects
+     */
     public Deck() {
+        this.dealIndex = 0;
+        int count = 0;
         for (int s = 1; s <= 4; s++) {
-            for (int v = 1; v <= 13; s++) {
+            for (int v = 1; v <= 13; v++) {
                 Card newCard = new Card(s, v);
+                deck[count] = newCard;
+                count++;
             }
         }
+    }
+
+    public void shuffle() {
+
+        for (int i = 0; i < SHUFFLE_COUNT; i++) {
+            int rNum1 = rng.nextInt(DECK_SIZE);
+            int rNum2 = rng.nextInt(DECK_SIZE);
+
+            Card tempCard = deck[rNum2];
+            this.deck[rNum2] = deck[rNum1];
+            this.deck[rNum1] = tempCard;
+        }
+    }
+
+    public Card getIndex(int i) {
+        return this.deck[i];
+    }
+
+    public Card deal() {
+        Card temp = deck[dealIndex];
+        dealIndex++;
+        return temp;
     }
 }

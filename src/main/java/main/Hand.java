@@ -1,48 +1,32 @@
 package main;
 
-import main.Card;
+enum HandType {
+    HIGH_CARD,
+    PAIR,
+    TWO_PAIR,
+    TOK,
+    STRAIGHT,
+    FLUSH,
+    FHOUSE,
+    FOAK,
+    SFLUSH,
+    RFLUSH
+}
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Hand {
-    private ArrayList<Card> hand;
-    private int total;
 
-    public Hand(){
-        this.hand = new ArrayList<Card>();
-        this.total = 0;
+    private final int HAND_SIZE = 2;
+
+    private final HandType handType = HandType.HIGH_CARD;
+    private Card[] hand = new Card[HAND_SIZE];
+
+    public Hand(Card c1, Card c2) {
+        this.hand[0] = c1;
+        this.hand[1] = c2;
     }
 
-    public void addCardToMyHand(Card newCard){
-        this.hand.add(newCard);
-        this.total += newCard.getCardValue();
-    }
-
-    /*public int getTotal() {
-        if (hand.contains(card1) && total > 21 ){
-            total -= 10;
-        }
-        return total;
-    }*/
-
-    public Card remove(){
-        Card removed = this.hand.remove(0);
-        return removed;
-    }
-
-    public void shuffle(){
-        Collections.shuffle(this.hand);
-    }
-
-    public  List<Card> getHand() {
+    public Card[] getHand() {
         return hand;
     }
-
-    public int getSize(){
-        return hand.size();
-    }
-
 }
