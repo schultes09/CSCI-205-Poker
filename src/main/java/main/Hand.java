@@ -21,13 +21,12 @@ public class Hand {
         this.total += newCard.getCardValue();
     }
 
-    public int getTotal() {
-        Card card1 = new Card(14);
+    /*public int getTotal() {
         if (hand.contains(card1) && total > 21 ){
             total -= 10;
         }
         return total;
-    }
+    }*/
 
     public Card remove(){
         Card removed = this.hand.remove(0);

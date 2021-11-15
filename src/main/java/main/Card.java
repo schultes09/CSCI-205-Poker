@@ -19,19 +19,21 @@
 package main;
 
 
-/**
- * Exception to be thrown if card conditions are incorrect
- */
-public class Card {
-    public final static int ACE = 1;
+
+public class Card implements Comparable<Card>{
+   /* public final static int ACE = 1;
     public final static int KING = 13;
     public final static int QUEEN = 12;
-    public final static int JACK = 11;
-    public int value;
+    public final static int JACK = 11;*/
 
-    public Card(int cardValue){
-        setCardValue(cardValue);
+    public int value;
+    public int suit;
+
+    public Card(int suit, int value){
+        this.value = value;
+        this.suit = suit;
     }
+
     public int getCardValue(){
         return value;
     }
@@ -47,4 +49,15 @@ public class Card {
             value = cardValue;
         }
     }
+
+    @Override
+    public int compareTo(Card other) {
+        if (this.value > other.value) {
+            return 1;
+        } else if (this.value < other.value) {
+            return -1;
+        }
+        return 0;
+    }
+
 }

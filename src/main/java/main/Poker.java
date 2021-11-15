@@ -21,10 +21,7 @@ package main;
 public class Poker {
 
     // Basic main class for simple testing
-    public static void main(String[] args) throws InvalidCardException {
-        Deck deck = new Deck();
-        for (Card c : deck.deck) {
-            System.out.println(c.suit + " " + c.rank);
-        }
+    public static void main(String[] args){
+
     }
 }

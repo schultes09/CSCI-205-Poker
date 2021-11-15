@@ -25,5 +25,14 @@ package main;
  */
 public class Deck {
 
+    public Card[] deck;
 
+    int count = 0;
+    public Deck() {
+        for (int s = 1; s <= 4; s++) {
+            for (int v = 1; v <= 13; s++) {
+                Card newCard = new Card(s, v);
+            }
+        }
+    }
 }
