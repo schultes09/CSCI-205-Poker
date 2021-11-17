@@ -73,4 +73,13 @@ public class Deck {
         dealIndex++;
         return temp;
     }
+
+    /**
+     * Method to shuffle the deck and reset the dealer index
+     */
+    public void resetDeck() {
+        this.shuffle();
+        this.dealIndex = 0;
+    }
+
 }
