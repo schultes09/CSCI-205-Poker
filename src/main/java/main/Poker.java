@@ -22,20 +22,29 @@ public class Poker {
 
     // Basic main class for simple testing
     public static void main(String[] args){
-        Card[][] game = new Card[3][2];
+
+        Hand[] hands = new Hand[2];
         Deck deck = new Deck();
+        Card[] pot = new Card[5];
 
         deck.shuffle();
-        for (int p = 0; p < 3; p++) {
-            for (int c = 0; c < 2; c++) {
-                game[p][c] = deck.deal();
-            }
+
+        for (int i = 0; i < 5; i++) {
+            pot[i] = deck.deal();
         }
 
-        System.out.println(game[1][0].getCard());
-        System.out.println(game[1][1].getCard());
-        System.out.println(game[2][0].getCard());
-        System.out.println(game[2][1].getCard());
+
+        for (int p = 0; p < 2; p++) {
+            Hand hand = new Hand(deck.deal(), deck.deal());
+            hands[p] = hand;
+        }
+
+        for (Card c : pot) {
+            System.out.println(c.getCard());
+        }
+
+
+
 
     }
 
