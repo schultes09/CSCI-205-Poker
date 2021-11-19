@@ -16,5 +16,6 @@ class DeckTest {
     @Test
     void shuffle() {
         assertEquals(this.deck.getDECK_SIZE(), 52);
+
     }
 }

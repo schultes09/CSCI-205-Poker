@@ -40,7 +40,6 @@ public class Deck {
 
     private int dealIndex;
 
-
     /**
      * Constructor for ordered deck of Card objects
      */
