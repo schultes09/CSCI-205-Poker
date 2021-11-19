@@ -34,6 +34,10 @@ public class Deck {
     private Card[] deck = new Card[DECK_SIZE];
     private Random rng = new Random();
 
+    public int getDECK_SIZE() {
+        return DECK_SIZE;
+    }
+
     private int dealIndex;
 
 
