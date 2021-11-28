@@ -16,4 +16,5 @@ public class Hand {
     public Card[] getHand() {
         return hand;
     }
+
 }
