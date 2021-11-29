@@ -34,11 +34,17 @@ public class Card extends Parent{
     public int value;
     public int suit;
 
+    /**
+     *
+     *
+     * @param suit int representation of card suit
+     * @param value int representation of card value
+     */
     public Card(int suit, int value){
         this.value = value;
         this.suit = suit;
 
-        Rectangle rec = new Rectangle(80, 100);
+        /*Rectangle rec = new Rectangle(80, 100);
         rec.setArcWidth(20);
         rec.setArcHeight(20);
         rec.setFill(Color.WHITE);
@@ -46,7 +52,7 @@ public class Card extends Parent{
         Text txt = new Text(toString());
         txt.setWrappingWidth(70);
 
-        getChildren().add(new StackPane(rec, txt));
+        getChildren().add(new StackPane(rec, txt));*/
     }
 
     public String getCard(){
