@@ -24,17 +24,21 @@ import java.util.List;
 
 public class CompareHands {
     private int rank;
-    /**
-     * DECLARED AS ARRAYLIST TO TEST, WILL BE CHANGED TO HAND LATER ON
-     */
+
     public Hand hand;
+    /*
+    Change to flop
+     */
     public Hand dealerHand;
     public Hand combHand;
 
     public CompareHands(Hand hand, Hand dealerHand){
 
         this.dealerHand = dealerHand;
-        this.combHand = Collections.singletonList(this.hand.addAll(this.dealerHand));
+        this.hand = hand;
+        ArrayList<Card> combHand = new ArrayList<>();
+        combHand.addAll(this.hand);
+        combHand.addAll(this.dealerHand);
         this.rank = findRank();
     }
 
@@ -143,7 +147,7 @@ public class CompareHands {
         //TODO
         for (int x = 0; x < this.combHand.size(); x++){
             for (int i = 0; i< this.combHand.size(); x++){
-                if (this.combHand[x].value == this.combHand[x].value){
+                if (this.combHand.get(x).value == this.combHand.get(x).value){
                     return true;
                 }
             }
