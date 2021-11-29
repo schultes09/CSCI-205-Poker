@@ -18,42 +18,52 @@
 package main;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class CompareHands {
     private int rank;
+    /**
+     * DECLARED AS ARRAYLIST TO TEST, WILL BE CHANGED TO HAND LATER ON
+     */
     public Hand hand;
     public Hand dealerHand;
+    public Hand combHand;
 
     public CompareHands(Hand hand, Hand dealerHand){
-        this.hand = hand;
+
         this.dealerHand = dealerHand;
+        this.combHand = Collections.singletonList(this.hand.addAll(this.dealerHand));
+        this.rank = findRank();
     }
 
-    public int findRank(Hand handx){
-        if (this.hand.isRoyalFlush()){
+    public int findRank(){
+        if (isRoyalFlush()){
             return 1;
         }
-        else if (this.hand.isStraightFlush()){
+        else if (isStraightFlush()){
             return 2;
         }
-        else if (this.hand.isFourOfAKind()){
+        else if (isFourOfAKind()){
             return 3;
         }
-        else if (this.hand.isFullHouse()){
+        else if (isFullHouse()){
             return 4;
         }
-        else if (this.hand.isFlush()){
+        else if (isFlush()){
             return 5;
         }
-        else if (this.hand.isStraight()){
+        else if (isStraight()){
             return 6;
         }
-        else if (this.hand.isThreeOfAKind()){
+        else if (isThreeOfAKind()){
             return 7;
         }
-        else if (this.hand.isTwoPair()){
+        else if (isTwoPair()){
             return 8;
         }
-        else if (this.hand.isOnePair()){
+        else if (isOnePair()){
             return 9;
         }
         else{
@@ -63,7 +73,7 @@ public class CompareHands {
 
     public boolean isRoyalFlush(){
         //TODO
-        if (!this.hand.isFlush){
+        if (!isFlush()){
             return false;
         }
 
@@ -72,7 +82,7 @@ public class CompareHands {
 
     public boolean isStraightFlush(){
         //TODO
-        if (this.hand.isFlush && this.hand.isStraight){
+        if (isFlush() && isStraight()){
             return true;
         }
         else{
@@ -82,7 +92,7 @@ public class CompareHands {
 
     public boolean isFourOfAKind(){
         //TODO
-        if (this.hand.length() < 4){
+        if (this.combHand.size() < 4){
             return false;
         }
 
@@ -90,7 +100,7 @@ public class CompareHands {
     }
 
     public boolean isFullHouse(){
-        if (this.hand.length() != 5){
+        if (this.combHand.size() < 5){
             return false;
         }
 
@@ -98,7 +108,7 @@ public class CompareHands {
     }
 
     public boolean isFlush(){
-        if (this.hand.length() != 5){
+        if (this.combHand.size() < 5){
             return false;
         }
 
@@ -106,7 +116,7 @@ public class CompareHands {
     }
 
     public boolean isStraight(){
-        if (this.hand.length() != 5){
+        if (this.combHand.size() < 5){
             return false;
         }
 
@@ -114,7 +124,7 @@ public class CompareHands {
     }
 
     public boolean isThreeOfAKind(){
-        if (this.hand.length() < 3){
+        if (this.combHand.size() < 3){
             return false;
         }
 
@@ -122,7 +132,7 @@ public class CompareHands {
     }
 
     public boolean isTwoPair(){
-        if (this.hand.length() < 4){
+        if (this.combHand.size() < 4){
             return false;
         }
 
@@ -131,5 +141,13 @@ public class CompareHands {
 
     public boolean isOnePair(){
         //TODO
+        for (int x = 0; x < this.combHand.size(); x++){
+            for (int i = 0; i< this.combHand.size(); x++){
+                if (this.combHand[x].value == this.combHand[x].value){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
