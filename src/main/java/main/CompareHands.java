@@ -33,24 +33,23 @@ public class CompareHands {
     public Hand combHand;
 
     public CompareHands(Hand hand, Hand dealerHand){
-
         this.dealerHand = dealerHand;
         this.hand = hand;
+        buildCombHand();
+        this.rank = findRank();
+    }
+
+    /**
+     * Combines the flop hand and the players hand
+     * Sorts the new hand for easier
+     */
+    private void buildCombHand() {
         ArrayList<Card> combHand = new ArrayList<>();
         combHand.addAll(this.hand);
         combHand.addAll(this.dealerHand);
         Collections.sort(combHand,
-                (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
-        //sort(combHand);
-        this.rank = findRank();
+                Card::compareTo);
     }
-
-//    public static void sort(ArrayList<Card> hand) {
-//
-//        hand.sort((c1, c2)
-//                -> c1.getValue().compareTo(
-//                    c2.getValue()));
-//    }
 
     public int findRank(){
         if (isRoyalFlush()){
@@ -85,62 +84,47 @@ public class CompareHands {
         }
     }
 
+    //Maybe iterate and add 10,11,12,13,1 to a list then check if there's a straight flush
     public boolean isRoyalFlush(){
         //TODO
-        if (!isFlush()){
+        if (!isStraightFlush()){
             return false;
         }
 
         return false;
     }
 
+    /**
+     * Iterates through the hand
+     * Check if the suit of the next card is the same and if the value is one greater
+     * @return true if the requirements above are met for at least 5 cards, otherwise false
+     */
     public boolean isStraightFlush(){
-        //TODO
-        if (isFlush() && isStraight()){
+        int numInRow = 0;
+        for (int x = 0; x < this.combHand.size(); x++){
+            if (this.combHand.get(x).value +1 == this.combHand.get(x+1).value){
+                if(this.combHand.get(x).suit == this.combHand.get(x+1).suit){
+                    numInRow++;
+                }
+            }
+            else if(this.combHand.get(x).value == this.combHand.get(x+1).value){
+                continue;
+            }
+            else{
+                numInRow = 0;
+            }
+        }
+        if (numInRow >= 5){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     }
 
+    /**
+     * Iterates through the hand
+     * @return true if four cards with the same value are detected
+     */
     public boolean isFourOfAKind(){
-        //TODO
-        if (this.combHand.size() < 4){
-            return false;
-        }
-
-        return false;
-    }
-
-    public boolean isFullHouse(){
-        if (this.combHand.size() < 5){
-            return false;
-        }
-
-        return false;
-    }
-
-    public boolean isFlush(){
-        if (this.combHand.size() < 5){
-            return false;
-        }
-
-        return false;
-    }
-
-    public boolean isStraight(){
-        if (this.combHand.size() < 5){
-            return false;
-        }
-
-        return false;
-    }
-
-    public boolean isThreeOfAKind(){
-        if (this.combHand.size() < 3){
-            return false;
-        }
         for (int x = 0; x < this.combHand.size(); x++){
             int numSameCards = 0;
             for (int i = 0; i< this.combHand.size(); x++){
@@ -148,7 +132,7 @@ public class CompareHands {
                     numSameCards ++;
                 }
             }
-            if (numSameCards == 3){
+            if (numSameCards == 4){
                 return true;
             }
         }
@@ -156,10 +140,81 @@ public class CompareHands {
         return false;
     }
 
-    public boolean isTwoPair(){
-        if (this.combHand.size() < 4){
-            return false;
+    public boolean isFullHouse(){
+        //TODO
+        return false;
+    }
+
+    /**
+     * Iterates through the hand comparing each cards suit to the current card
+     * @return true if 5 cards have the same suit, otherwise false
+     */
+    public boolean isFlush(){
+        for (int x = 0; x < this.combHand.size(); x++){
+            int numSameSuit = 0;
+            for (int i = 0; i< this.combHand.size(); x++) {
+                if (this.combHand.get(x).suit == this.combHand.get(i).suit) {
+                    numSameSuit++;
+                }
+                if (numSameSuit == 5) {
+                    return true;
+                }
+            }
         }
+
+
+        return false;
+    }
+
+    /**
+     * Iterates through the hand
+     * If the value of the next card in the hand is not 1 greater than the
+     * @return
+     */
+    public boolean isStraight(){
+        int numInRow = 0;
+        for (int x = 0; x < this.combHand.size(); x++){
+            if (this.combHand.get(x).value +1 == this.combHand.get(x+1).value){
+                numInRow ++;
+            }
+            else if(this.combHand.get(x).value == this.combHand.get(x+1).value){
+                continue;
+            }
+            else if (this.combHand.get(x).value +1 != this.combHand.get(x+1).value){
+                numInRow = 0;
+            }
+        }
+        if (numInRow >= 5){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Iterates through the hand comparing each card to the current card
+     * @return true if three of the same value cards are detected, otherwise false
+     */
+    public boolean isThreeOfAKind(){
+        for (int x = 0; x < this.combHand.size(); x++){
+            int numSameCards = 0;
+            for (int i = 0; i< this.combHand.size(); x++) {
+                if (this.combHand.get(x).value == this.combHand.get(x).value) {
+                    numSameCards++;
+                }
+                if (numSameCards == 3) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Iterates through the hand comparing each card to the current card
+     * @return true if two pairs of cards with the same value are detected, otherwise false
+     */
+    public boolean isTwoPair(){
         int numPair = 0;
         for (int x = 0; x < this.combHand.size(); x++){
             for (int i = 0; i< this.combHand.size(); x++){
@@ -168,15 +223,18 @@ public class CompareHands {
                 }
             }
         }
-        if (numPair == 2){
+        if (numPair >= 2){
             return true;
         }
 
         return false;
     }
 
+    /**
+     * Iterates through the hand comparing each card to the current card
+     * @return true if two cards with the same value are detected, otherwise false
+     */
     public boolean isOnePair(){
-        //TODO
         for (int x = 0; x < this.combHand.size(); x++){
             for (int i = 0; i< this.combHand.size(); x++){
                 if (this.combHand.get(x).value == this.combHand.get(x).value){

@@ -25,7 +25,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.Parent;
 
-public class Card extends Parent{
+public class Card implements Comparable{
    /* public final static int ACE = 1;
     public final static int KING = 13;
     public final static int QUEEN = 12;
@@ -46,7 +46,7 @@ public class Card extends Parent{
         Text txt = new Text(toString());
         txt.setWrappingWidth(70);
 
-        getChildren().add(new StackPane(rec, txt));
+        //getChildren().add(new StackPane(rec, txt));
     }
 
     public String getCard(){
@@ -83,14 +83,14 @@ public class Card extends Parent{
      * @param other - other Card object to be compared
      * @return - int designating which Object has a higher value
      */
-    public int compareTo(Card other) {
-        if (this.value > other.value) {
-            return 1;
-        } else if (this.value < other.value) {
-            return -1;
-        }
-        return 0;
-    }
+//    public int compareTo(Card other) {
+//        if (this.value > other.value) {
+//            return 1;
+//        } else if (this.value < other.value) {
+//            return -1;
+//        }
+//        return 0;
+//    }
 
     @Override
     public String toString() {
@@ -99,5 +99,15 @@ public class Card extends Parent{
 
     public int getValue(){
         return this.value;
+    }
+
+    public int compareTo(Card other) {
+        int compRank = (other).getValue();
+        return this.value-compRank;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
