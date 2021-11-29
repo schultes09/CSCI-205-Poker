@@ -28,14 +28,19 @@ public class Flop {
 
     private ArrayList<Card> flop;
 
-    public Flop(ArrayList<Card> flop) {
+    public Flop() {
         this.flop = new ArrayList<>(5);
     }
 
-    private void addCard(Card crd) {
+    public void addCard(Card crd) {
         this.flop.add(crd);
     }
 
-
+    public ArrayList getFlop() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(this.flop.get(i).toString());
+        }
+        return flop;
+    }
 
 }
