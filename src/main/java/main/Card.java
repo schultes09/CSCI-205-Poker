@@ -19,8 +19,13 @@
 package main;
 
 
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.scene.Parent;
 
-public class Card implements Comparable<Card>{
+public class Card extends Parent{
    /* public final static int ACE = 1;
     public final static int KING = 13;
     public final static int QUEEN = 12;
@@ -32,29 +37,52 @@ public class Card implements Comparable<Card>{
     public Card(int suit, int value){
         this.value = value;
         this.suit = suit;
+
+        Rectangle rec = new Rectangle(80, 100);
+        rec.setArcWidth(20);
+        rec.setArcHeight(20);
+        rec.setFill(Color.WHITE);
+
+        Text txt = new Text(toString());
+        txt.setWrappingWidth(70);
+
+        getChildren().add(new StackPane(rec, txt));
     }
 
     public String getCard(){
         return this.suit + " " + this.value;
     }
 
-    /*public void setCardValue(int cardValue){
-        if (cardValue>10 && cardValue<14){
-            value = 10;
+
+    /**
+     * Function to translate suit int to String
+     *
+     * @return String representation of Suit
+     */
+    public String getSuitString() {
+        String suitString = "";
+        switch (this.suit) {
+            case 1:
+                suitString = "Hearts";
+                break;
+            case 2:
+                suitString = "Diamonds";
+                break;
+            case 3:
+                suitString = "Clubs";
+                break;
+            case 4:
+                suitString = "Spades";
+                break;
         }
-        else if (cardValue == 14){
-            value = 11;
-        }
-        else {
-            value = cardValue;
-        }
-    }*/
+        return suitString;
+    }
+
 
     /**
      * @param other - other Card object to be compared
      * @return - int designating which Object has a higher value
      */
-    @Override
     public int compareTo(Card other) {
         if (this.value > other.value) {
             return 1;
@@ -64,4 +92,8 @@ public class Card implements Comparable<Card>{
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return this.value + " of " + this.getSuitString();
+    }
 }
