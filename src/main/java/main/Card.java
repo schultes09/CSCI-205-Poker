@@ -96,4 +96,8 @@ public class Card extends Parent{
     public String toString() {
         return this.value + " of " + this.getSuitString();
     }
+
+    public int getValue(){
+        return this.value;
+    }
 }

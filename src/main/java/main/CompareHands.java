@@ -17,7 +17,7 @@
  */
 package main;
 
-
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,8 +39,18 @@ public class CompareHands {
         ArrayList<Card> combHand = new ArrayList<>();
         combHand.addAll(this.hand);
         combHand.addAll(this.dealerHand);
+        Collections.sort(combHand,
+                (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
+        //sort(combHand);
         this.rank = findRank();
     }
+
+//    public static void sort(ArrayList<Card> hand) {
+//
+//        hand.sort((c1, c2)
+//                -> c1.getValue().compareTo(
+//                    c2.getValue()));
+//    }
 
     public int findRank(){
         if (isRoyalFlush()){
@@ -131,6 +141,17 @@ public class CompareHands {
         if (this.combHand.size() < 3){
             return false;
         }
+        for (int x = 0; x < this.combHand.size(); x++){
+            int numSameCards = 0;
+            for (int i = 0; i< this.combHand.size(); x++){
+                if (this.combHand.get(x).value == this.combHand.get(x).value){
+                    numSameCards ++;
+                }
+            }
+            if (numSameCards == 3){
+                return true;
+            }
+        }
 
         return false;
     }
@@ -138,6 +159,17 @@ public class CompareHands {
     public boolean isTwoPair(){
         if (this.combHand.size() < 4){
             return false;
+        }
+        int numPair = 0;
+        for (int x = 0; x < this.combHand.size(); x++){
+            for (int i = 0; i< this.combHand.size(); x++){
+                if (this.combHand.get(x).value == this.combHand.get(x).value){
+                    numPair ++;
+                }
+            }
+        }
+        if (numPair == 2){
+            return true;
         }
 
         return false;
