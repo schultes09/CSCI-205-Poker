@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.DeckViewController">
+   <children>
+      <HBox layoutX="70.0" layoutY="52.0" prefHeight="172.0" prefWidth="448.0" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <ImageView fx:id="cardOne" fitHeight="170.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="cardTwo" fitHeight="170.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="cardThree" fitHeight="170.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="cardFour" fitHeight="170.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="cardFive" fitHeight="170.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" />
+         </children></HBox>
+      <HBox layoutX="208.0" layoutY="246.0" prefHeight="140.0" prefWidth="276.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0">
+         <children>
+            <ImageView fx:id="cardSix" fitHeight="150.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="cardSeven" fitHeight="150.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
+         </children></HBox>
+      <Button fx:id="cardBtn" layoutX="518.0" layoutY="360.0" mnemonicParsing="false" text="Next Player's Card" />
+   </children>
+</AnchorPane>

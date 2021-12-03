@@ -33,5 +33,5 @@ dependencies {
 
 application {
     mainClassName = project.hasProperty("mainClass") ? project.getProperty("mainClass") :
-            "lab10.ex1.HelloMain"
+            "main.Poker"
 }

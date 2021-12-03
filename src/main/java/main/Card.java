@@ -19,49 +19,103 @@
 package main;
 
 
+import javafx.scene.image.Image;
 
-public class Card implements Comparable<Card>{
-   /* public final static int ACE = 1;
-    public final static int KING = 13;
-    public final static int QUEEN = 12;
-    public final static int JACK = 11;*/
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.scene.Parent;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+
+
+public class Card implements Comparable{
 
     public int value;
     public int suit;
+    private Image image;
 
-    public Card(int suit, int value){
+    public Card(int suit, int value) throws FileNotFoundException, URISyntaxException {
         this.value = value;
         this.suit = suit;
+        String fileName = value + "," + suit + ".PNG";
+        URL url = Card.class.getResource("/images/"+fileName);
+        File f = new File(url.toURI());
+        InputStream in = new FileInputStream(f);
+        image = new Image(in);
+
+        Rectangle rec = new Rectangle(80, 100);
+        rec.setArcWidth(20);
+        rec.setArcHeight(20);
+        rec.setFill(Color.WHITE);
+
+        Text txt = new Text(toString());
+        txt.setWrappingWidth(70);
+
     }
 
     public String getCard(){
         return this.suit + " " + this.value;
     }
 
-    /*public void setCardValue(int cardValue){
-        if (cardValue>10 && cardValue<14){
-            value = 10;
+    public String getImageCard(){
+        return this.suit + "," + this.value + ".PNG";
+    }
+
+    /**
+     * Function to translate suit int to String
+     *
+     * @return String representation of Suit
+     */
+    public String getSuitString() {
+        String suitString = "";
+        switch (this.suit) {
+            case 1:
+                suitString = "Clubs";
+                break;
+            case 2:
+                suitString = "Diamonds";
+                break;
+            case 3:
+                suitString = "Hearts";
+                break;
+            case 4:
+                suitString = "Spades";
+                break;
         }
-        else if (cardValue == 14){
-            value = 11;
-        }
-        else {
-            value = cardValue;
-        }
-    }*/
+        return suitString;
+    }
+
+
+    public Image getImage() {
+        return image;
+    }
+
+    public int getValue(){
+        return this.value;
+    }
+
 
     /**
      * @param other - other Card object to be compared
      * @return - int designating which Object has a higher value
      */
-    @Override
+
     public int compareTo(Card other) {
-        if (this.value > other.value) {
-            return 1;
-        } else if (this.value < other.value) {
-            return -1;
-        }
+        int compRank = (other).getValue();
+        return this.value-compRank;
+    }
+
+    @Override
+    public int compareTo(Object o) {
         return 0;
     }
+
 
 }
