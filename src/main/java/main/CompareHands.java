@@ -99,7 +99,7 @@ public class CompareHands extends ArrayList{
             }
         }
         Hand temp2 = new Hand(temp);
-        System.out.println(temp);
+        //System.out.println(temp);
         CompareHands comp = new CompareHands(temp2);
         return comp.isStraightFlush();
     }

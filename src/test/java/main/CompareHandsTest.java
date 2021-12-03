@@ -44,9 +44,9 @@ class CompareHandsTest {
         CompareHands ch1 = new CompareHands(h1,h2);
         CompareHands ch2 = new CompareHands(h1,h3);
         CompareHands ch3 = new CompareHands(h1,h4);
-        System.out.println(ch1.combHand.getHand());
-        System.out.println(ch2.combHand.getHand());
-        System.out.println(ch3.combHand.getHand());
+//        System.out.println(ch1.combHand.getHand());
+//        System.out.println(ch2.combHand.getHand());
+//        System.out.println(ch3.combHand.getHand());
         assertTrue(ch1.isRoyalFlush() == true);
         assertTrue(ch2.isRoyalFlush() == false);
         assertTrue(ch3.isRoyalFlush() == false);
