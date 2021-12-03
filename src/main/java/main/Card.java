@@ -94,7 +94,21 @@ public class Card implements Comparable{
 
     @Override
     public String toString() {
-        return this.value + " of " + this.getSuitString();
+        if (this.value == 1){
+            return "Ace of " + this.getSuitString();
+        }
+        else if (this.value == 11){
+            return "Jack of " + this.getSuitString();
+        }
+        else if (this.value == 12){
+            return "Queen of " + this.getSuitString();
+        }
+        else if (this.value == 13){
+            return "King of " + this.getSuitString();
+        }
+        else {
+            return this.value + " of " + this.getSuitString();
+        }
     }
 
     public int getValue(){
