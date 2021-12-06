@@ -22,90 +22,60 @@ package main;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
-public class Hand implements Collection<Card> {
+public class Hand extends ArrayList<Card> {
 
-    private final int HAND_SIZE = 2;
+    //private final int HAND_SIZE = 2;
 
     //private Card[] hand = new Card[HAND_SIZE];
-    private ArrayList<Card> hand = new ArrayList<>();
+    private ArrayList<Card> hand;
+
+    public Hand(){
+        this.hand = new ArrayList<>(7);
+    }
 
     public Hand(Card c1, Card c2) {
-        this.hand.set(0, c1);
-        this.hand.set(1, c2);
+        this.hand = new ArrayList<>(2);
+        this.hand.add(c1);
+        this.hand.add(c2);
+    }
+    public Hand(Card c1, Card c2, Card c3, Card c4, Card c5){
+        this.hand = new ArrayList<>(5);
+        this.hand.add(c1);
+        this.hand.add(c2);
+        this.hand.add(c3);
+        this.hand.add(c4);
+        this.hand.add(c5);
+    }
+
+    public Hand(ArrayList<Card> a){
+        this.hand = new ArrayList<>();
+        this.hand.addAll(a);
     }
 
     public ArrayList<Card> getHand() {
-        return hand;
+        return this.hand;
     }
+
+    public void addCardToMyHand(Card newCard){
+        this.hand.add(newCard);
+    }
+
+    public Card remove(){
+        Card removed = this.hand.remove(0);
+        return removed;
+    }
+
+    public int getSize(){
+        return hand.size();
+    }
+
+
 
 
     @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        return false;
-    }
-
-    @Override
-    public Iterator<Card> iterator() {
-        return null;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public <T> T[] toArray(T[] a) {
-        return null;
-    }
-
-    @Override
-    public boolean add(Card card) {
-        return false;
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends Card> c) {
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    public Card get(int x) {
-        return this.hand.get(x);
+    public String toString() {
+        return this.hand.toString();
     }
 }

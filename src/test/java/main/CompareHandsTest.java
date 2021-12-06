@@ -3,6 +3,9 @@ package main;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CompareHandsTest {
@@ -12,7 +15,7 @@ class CompareHandsTest {
     }
 
     @Test
-    void findRank() {
+    void findRank() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(1,11);
         Card c2 = new Card(2,11);
         Card c3 = new Card(3, 4);
@@ -28,7 +31,7 @@ class CompareHandsTest {
     }
 
     @Test
-    void isRoyalFlush() {
+    void isRoyalFlush() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(1,10);
         Card c2 = new Card(1,11);
         Card c3 = new Card(1, 12);
@@ -53,7 +56,7 @@ class CompareHandsTest {
     }
 
     @Test
-    void isStraightFlush() {
+    void isStraightFlush() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(1,1);
         Card c2 = new Card(1,2);
         Card c3 = new Card(1, 3);
@@ -78,7 +81,7 @@ class CompareHandsTest {
     }
 
     @Test
-    void isFourOfAKind() {
+    void isFourOfAKind() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(3,1);
         Card c2 = new Card(1,1);
         Card c3 = new Card(2, 3);
@@ -120,7 +123,7 @@ class CompareHandsTest {
 //    }
 
     @Test
-    void isFlush() {
+    void isFlush() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(1,1);
         Card c2 = new Card(1,2);
         Card c3 = new Card(2, 3);
@@ -141,7 +144,7 @@ class CompareHandsTest {
     }
 
     @Test
-    void isStraight() {
+    void isStraight() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(1,1);
         Card c2 = new Card(2,2);
         Card c3 = new Card(3, 3);
@@ -162,7 +165,7 @@ class CompareHandsTest {
     }
 
     @Test
-    void isThreeOfAKind() {
+    void isThreeOfAKind() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(1,3);
         Card c2 = new Card(2,11);
         Card c3 = new Card(3, 4);
@@ -182,7 +185,7 @@ class CompareHandsTest {
     }
 
     @Test
-    void isTwoPair() {
+    void isTwoPair() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(1,11);
         Card c2 = new Card(2,11);
         Card c3 = new Card(3, 4);
@@ -201,7 +204,7 @@ class CompareHandsTest {
     }
 
     @Test
-    void isOnePair() {
+    void isOnePair() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(1,3);
         Card c2 = new Card(2,11);
         Card c3 = new Card(3, 4);

@@ -72,8 +72,11 @@ public class Deck {
         this.backOfCard = backOfCard;
     }
 
-    public void setFrontOfCard(Card card1){
+    public void setFrontOfCard(Card card1) throws FileNotFoundException, URISyntaxException {
         this.frontOfCard = new Image("./images/" + card1.getImageCard());
+    }
+    public Image getFrontOfCard() {
+        return frontOfCard;
     }
 
 

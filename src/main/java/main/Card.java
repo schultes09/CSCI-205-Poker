@@ -101,6 +101,26 @@ public class Card implements Comparable{
         return this.value;
     }
 
+    @Override
+    public String toString() {
+//        if (this.value == 1){
+//            return "Ace of " + this.getSuitString();
+//        }
+//        else if (this.value == 11){
+//            return "Jack of " + this.getSuitString();
+//        }
+//        else if (this.value == 12){
+//            return "Queen of " + this.getSuitString();
+//        }
+//        else if (this.value == 13){
+//            return "King of " + this.getSuitString();
+//        }
+//        else {
+            return this.value + "," + this.suit;
+//        }
+    }
+
+
 
     /**
      * @param other - other Card object to be compared
