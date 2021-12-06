@@ -169,7 +169,7 @@ public class CompareHands extends ArrayList{
                         }
                     }
                     else {
-                        numInRow = 0;
+                        numInRow = 1;
                     }
                 }
             }
@@ -179,7 +179,7 @@ public class CompareHands extends ArrayList{
     }
 
     /**
-     * Iterates through the hand
+     * Iterates through the hand checking for places where there are four cards of the same value
      * @return true if four cards with the same value are detected
      */
     public boolean isFourOfAKind(){
@@ -244,6 +244,7 @@ public class CompareHands extends ArrayList{
             if(x == 6);
             else if (this.combHand.getHand().get(x).value +1 == this.combHand.getHand().get(x+1).value){
                 numInRow ++;
+                System.out.println(numInRow);
                 if (numInRow >=5){
                     return true;
                 }
@@ -251,7 +252,7 @@ public class CompareHands extends ArrayList{
             else if(this.combHand.getHand().get(x).value == this.combHand.getHand().get(x+1).value){
             }
             else if (this.combHand.getHand().get(x).value +1 != this.combHand.getHand().get(x+1).value){
-                numInRow = 0;
+                numInRow = 1;
             }
         }
         return false;
