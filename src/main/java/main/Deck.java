@@ -81,8 +81,8 @@ public class Deck {
 
 
 
-    public Card dealTopCard(){
-            return deck[0];
+    public Card dealTopCard(int i){
+        return deck[i];
     }
 
     public void shuffle() {

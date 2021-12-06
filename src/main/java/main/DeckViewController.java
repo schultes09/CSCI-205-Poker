@@ -21,7 +21,9 @@ package main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
@@ -72,9 +74,10 @@ public class DeckViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Deck deck = null;
+
         try {
-            deck = new Deck();
+            deckSpecial = new Deck();
+            deckSpecial.shuffle();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {

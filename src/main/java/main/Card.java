@@ -64,8 +64,10 @@ public class Card implements Comparable{
         return this.suit + " " + this.value;
     }
 
-    public String getImageCard(){
-        return this.suit + "," + this.value + ".PNG";
+    public Image getImageCard() throws FileNotFoundException, URISyntaxException {
+        String fileName = this.value + "," + this.suit + ".PNG";
+        image = new Image("/images/"+fileName);
+        return image;
     }
 
     /**
