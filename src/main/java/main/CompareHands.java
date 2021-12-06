@@ -17,14 +17,9 @@
  */
 package main;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class CompareHands extends ArrayList{
-    private int rank;
-
     public Hand hand;
     public Hand dealerHand;
     public Hand combHand;
@@ -33,7 +28,6 @@ public class CompareHands extends ArrayList{
         this.dealerHand = dealerHand;
         this.hand = hand;
         buildCombHand();
-        //this.rank = findRank();
     }
     public CompareHands(Hand hand){
         this.combHand = hand;
@@ -45,14 +39,16 @@ public class CompareHands extends ArrayList{
      */
     private void buildCombHand() {
         ArrayList<Card> combHandArray = new ArrayList<>();
-//        this.combHand = new Hand();
         combHandArray.addAll(this.hand.getHand());
         combHandArray.addAll(this.dealerHand.getHand());
-        Collections.sort(combHandArray,
-                Card::compareTo);
+        combHandArray.sort(Card::compareTo);
         this.combHand = new Hand(combHandArray);
     }
 
+    /**
+     * Calls each of the comparing methods until it determines what hand the player has.
+     * @return in rank, 1-10 depending on the strength of the hand. 1 is the strongest, 10 is the weakest.
+     */
     public int findRank(){
         if (isRoyalFlush()){
             return 1;
@@ -163,9 +159,24 @@ public class CompareHands extends ArrayList{
         return false;
     }
 
+    /**
+     * Go through the hand keeping track of how many cards of each number there are, add these numbers to an array
+     * check the array to see if it contains both 2 and 3.
+     * @return true if above is met. false otherwise
+     */
     public boolean isFullHouse(){
-        //TODO
-        return false;
+        ArrayList numbers = new ArrayList();
+        for (int x = 0; x < this.combHand.getHand().size(); x++){
+            int amount = 0;
+            for (int i = 0; i < this.combHand.getHand().size(); i++){
+                //Check if the numbers are equal
+                if(this.combHand.getHand().get(x).value == this.combHand.getHand().get(i).value){
+                    amount ++;
+                }
+            }
+            numbers.add(amount);
+        }
+        return(numbers.contains(2)&&numbers.contains(3));
     }
 
     /**
@@ -192,7 +203,7 @@ public class CompareHands extends ArrayList{
     /**
      * Iterates through the hand
      * If the value of the next card in the hand is not 1 greater than the
-     * @return
+     * @return true if there is a straight false otherwise
      */
     public boolean isStraight(){
         int numInRow = 1;
@@ -210,7 +221,7 @@ public class CompareHands extends ArrayList{
                 numInRow = 0;
             }
         }
-        return numInRow >= 5;
+        return false;
     }
 
     /**
@@ -234,7 +245,7 @@ public class CompareHands extends ArrayList{
     public boolean isTwoPair(){
         int numPair = 0;
         for (int x = 0; x < this.combHand.getHand().size(); x++){
-            if (x ==6);
+            if (x == 6);
             else if ((this.combHand.getHand().get(x).value == this.combHand.getHand().get(x+1).value) && (this.combHand.getHand().get(x).value != this.combHand.getHand().get(x-1).value)){
                 numPair++;
             }
@@ -257,10 +268,4 @@ public class CompareHands extends ArrayList{
         }
         return false;
     }
-    public int getRank(){
-        return this.rank;
-    }
-//    public String toString(){
-//        return this.combHand.toString();
-//    }
 }

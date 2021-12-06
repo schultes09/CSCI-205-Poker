@@ -11,6 +11,7 @@ public class Hand extends ArrayList<Card> {
     //private final int HAND_SIZE = 2;
 
     //private Card[] hand = new Card[HAND_SIZE];
+    private int rank;
     private ArrayList<Card> hand;
 
     public Hand(){
