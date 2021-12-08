@@ -17,3 +17,5 @@ We created a program that allows a user and a friend to play a poker game on the
 Above is our java package that contains all of our coding files used in the making of our game. As can be seen, within our java package we have a main package holding all of the functionality classes for the program, a resources package which holds all of the card images and the guidelines for scene builder to display the game for the user, and then our test package which was used to test our methods within the main package. All of these packages are intertwined to allow the program to produce its output. Each package breaks down different pieces of the program in order to group together similar functions of the program and make the program a lot easier to follow. 
 ## 3rd Party Libraries:
 JavaFX
+
+##
