@@ -209,11 +209,11 @@ class CompareHandsTest {
     void isTwoPair() throws FileNotFoundException, URISyntaxException {
         Card c1 = new Card(1,11);
         Card c2 = new Card(2,11);
-        Card c3 = new Card(3, 4);
+        Card c3 = new Card(3, 7);
         Card c4 = new Card(2,4);
         Card c5 = new Card(2,1);
         Card c6 = new Card(1, 2);
-        Card c7 = new Card(4, 6);
+        Card c7 = new Card(4, 4);
         Card c8 = new Card(3,12);
 
         Hand h1 = new Hand(c1,c2);

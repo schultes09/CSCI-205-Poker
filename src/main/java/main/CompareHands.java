@@ -134,47 +134,30 @@ public class CompareHands extends ArrayList{
     }
 
     /**
-     * @return true if the requirements above are met for at least 5 cards, otherwise false
+     * Adds all the cards of a certain suit to a new array
+     * Checks the new array to see if there is a staight
+     * @return true if the requirements above are met, otherwise false
      */
     public boolean isStraightFlush(){
-        //Create a temporary arraylist to store all teh cards of the same suit
+        //Create new array
         ArrayList temp = new ArrayList();
-        //Iterate through looking for cards of the same suit
+        //Iterates through to compare
         for (int x = 0; x < this.combHand.getHand().size(); x++){
-            //Clear the current list of same suit if there are not enough of that suit to fulfil
-            temp.clear();
-            //Add the first element b/c it gets skipped later
-            temp.add(this.combHand.getHand().get(x));
-            for (int i = 0; i < this.combHand.getHand().size(); i++){
-                //Skip objects that are the same
-                if (this.combHand.getHand().get(x) == this.combHand.getHand().get(i));
-                    //Check if the suits are the same
-                else if (this.combHand.getHand().get(x).suit == this.combHand.getHand().get(i).suit){
-                    //If suits are the same : add to arraylist of other cards with same suit
+            for(int i = 0; i < this.combHand.getHand().size(); i++) {
+                //if suits are the same, add to new array
+                if (this.combHand.getHand().get(x).suit == this.combHand.getHand().get(i).suit){
                     temp.add(this.combHand.getHand().get(i));
                 }
-            }
-            //If there are enough cards of the same suit
-            if(temp.size() >= 5){
-                //Switch from ArrayList to Hand
-                Hand temp2 = new Hand(temp);
-                int numInRow = 1;
-                //Iterate through checking if the cards of the same suit make a straight
-                for (int z = 0; z < temp2.getHand().size(); z++){
-                    if (this.combHand.getHand().get(x).value +1 == this.combHand.getHand().get(x+1).value){
-                        numInRow ++;
-                        //Check if there is a straight
-                        if (numInRow >=5){
-                            return true;
-                        }
-                    }
-                    else {
-                        numInRow = 1;
-                    }
+                //if it's possible for there to be a straight, check it
+                if(temp.size()>=5){
+                    Hand temp2 = new Hand(temp);
+                    CompareHands comp = new CompareHands(temp2);
+                    return comp.isStraight();
                 }
             }
+            //if there arent enough of that suit, clear and try again
+            temp.clear();
         }
-        //If all else fails return false
         return false;
     }
 
@@ -241,7 +224,7 @@ public class CompareHands extends ArrayList{
     public boolean isStraight(){
         int numInRow = 1;
         for (int x = 0; x < this.combHand.getHand().size(); x++){
-            if(x == 6);
+            if(x == this.combHand.getHand().size()-1);
             else if (this.combHand.getHand().get(x).value +1 == this.combHand.getHand().get(x+1).value){
                 numInRow ++;
                 System.out.println(numInRow);
@@ -279,8 +262,9 @@ public class CompareHands extends ArrayList{
     public boolean isTwoPair(){
         int numPair = 0;
         for (int x = 0; x < this.combHand.getHand().size(); x++){
+            System.out.println(numPair);
             if (x == 6);
-            else if ((this.combHand.getHand().get(x).value == this.combHand.getHand().get(x+1).value) && (this.combHand.getHand().get(x).value != this.combHand.getHand().get(x-1).value)){
+            else if (this.combHand.getHand().get(x).value == this.combHand.getHand().get(x+1).value){
                 numPair++;
             }
         }
