@@ -18,6 +18,10 @@
  */
 package main;
 
+import javafx.scene.image.Image;
+
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.util.Random;
 
 /**
@@ -34,15 +38,22 @@ public class Deck {
     private Card[] deck = new Card[DECK_SIZE];
     private Random rng = new Random();
 
+    public int getDECK_SIZE() {
+        return DECK_SIZE;
+    }
+
     private int dealIndex;
 
+    private Image backOfCard;
+    private Image frontOfCard;
 
     /**
      * Constructor for ordered deck of Card objects
      */
-    public Deck() {
+    public Deck() throws FileNotFoundException, URISyntaxException {
         this.dealIndex = 0;
         int count = 0;
+        backOfCard = new Image("./images/backOfCard.png");
         for (int s = 1; s <= 4; s++) {
             for (int v = 1; v <= 13; v++) {
                 Card newCard = new Card(s, v);
@@ -50,6 +61,28 @@ public class Deck {
                 count++;
             }
         }
+    }
+
+    public Image getBackOfCard() {
+        return backOfCard;
+    }
+
+
+    public void setBackOfCard(Image backOfCard) {
+        this.backOfCard = backOfCard;
+    }
+
+    public void setFrontOfCard(Card card1) throws FileNotFoundException, URISyntaxException {
+        this.frontOfCard = new Image("./images/" + card1.getImageCard());
+    }
+    public Image getFrontOfCard() {
+        return frontOfCard;
+    }
+
+
+
+    public Card dealTopCard(int i){
+        return deck[i];
     }
 
     public void shuffle() {

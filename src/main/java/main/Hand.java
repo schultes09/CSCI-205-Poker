@@ -1,3 +1,21 @@
+/* *****************************************
+ * CSCI205 - Software Engineering and Design
+ * Fall 2021
+ * Instructor: Prof. Brian King
+ *
+ * Name: YOUR NAME
+ * Section: YOUR SECTION
+ * Date: 12/1/2021
+ * Time: 8:52 AM
+ *
+ * Project: csci205_final_project
+ * Package: main
+ * Class: Hand
+ *
+ * Description:
+ *
+ * ****************************************
+ */
 package main;
 
 
@@ -40,6 +58,21 @@ public class Hand extends ArrayList<Card> {
     public ArrayList<Card> getHand() {
         return this.hand;
     }
+
+    public void addCardToMyHand(Card newCard){
+        this.hand.add(newCard);
+    }
+
+    public Card remove(){
+        return this.hand.remove(0);
+    }
+
+    public int getSize(){
+        return hand.size();
+    }
+
+
+
 
     @Override
     public String toString() {

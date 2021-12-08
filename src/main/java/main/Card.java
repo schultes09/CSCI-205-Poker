@@ -19,24 +19,36 @@
 package main;
 
 
+import javafx.scene.image.Image;
+
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.Parent;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+
+
 public class Card implements Comparable{
-   /* public final static int ACE = 1;
-    public final static int KING = 13;
-    public final static int QUEEN = 12;
-    public final static int JACK = 11;*/
 
     public int value;
     public int suit;
+    private Image image;
 
-    public Card(int suit, int value){
+    public Card(int suit, int value) throws FileNotFoundException, URISyntaxException {
         this.value = value;
         this.suit = suit;
+        String fileName = value + "," + suit + ".PNG";
+        URL url = Card.class.getResource("/images/"+fileName);
+        File f = new File(url.toURI());
+        InputStream in = new FileInputStream(f);
+        image = new Image(in);
 
         Rectangle rec = new Rectangle(80, 100);
         rec.setArcWidth(20);
@@ -46,13 +58,17 @@ public class Card implements Comparable{
         Text txt = new Text(toString());
         txt.setWrappingWidth(70);
 
-        //getChildren().add(new StackPane(rec, txt));
     }
 
     public String getCard(){
         return this.suit + " " + this.value;
     }
 
+    public Image getImageCard() throws FileNotFoundException, URISyntaxException {
+        String fileName = this.value + "," + this.suit + ".PNG";
+        image = new Image("/images/"+fileName);
+        return image;
+    }
 
     /**
      * Function to translate suit int to String
@@ -63,13 +79,13 @@ public class Card implements Comparable{
         String suitString = "";
         switch (this.suit) {
             case 1:
-                suitString = "Hearts";
+                suitString = "Clubs";
                 break;
             case 2:
                 suitString = "Diamonds";
                 break;
             case 3:
-                suitString = "Clubs";
+                suitString = "Hearts";
                 break;
             case 4:
                 suitString = "Spades";
@@ -79,41 +95,39 @@ public class Card implements Comparable{
     }
 
 
-    /**
-     * @param other - other Card object to be compared
-     * @return - int designating which Object has a higher value
-     */
-//    public int compareTo(Card other) {
-//        if (this.value > other.value) {
-//            return 1;
-//        } else if (this.value < other.value) {
-//            return -1;
-//        }
-//        return 0;
-//    }
-
-    @Override
-    public String toString() {
-        if (this.value == 1){
-            return "Ace of " + this.getSuitString();
-        }
-        else if (this.value == 11){
-            return "Jack of " + this.getSuitString();
-        }
-        else if (this.value == 12){
-            return "Queen of " + this.getSuitString();
-        }
-        else if (this.value == 13){
-            return "King of " + this.getSuitString();
-        }
-        else {
-            return this.value + " of " + this.getSuitString();
-        }
+    public Image getImage() {
+        return image;
     }
 
     public int getValue(){
         return this.value;
     }
+
+    @Override
+    public String toString() {
+//        if (this.value == 1){
+//            return "Ace of " + this.getSuitString();
+//        }
+//        else if (this.value == 11){
+//            return "Jack of " + this.getSuitString();
+//        }
+//        else if (this.value == 12){
+//            return "Queen of " + this.getSuitString();
+//        }
+//        else if (this.value == 13){
+//            return "King of " + this.getSuitString();
+//        }
+//        else {
+            return this.value + "," + this.suit;
+//        }
+    }
+
+
+
+    /**
+     * @param other - other Card object to be compared
+     * @return - int designating which Object has a higher value
+     */
 
     public int compareTo(Card other) {
         int compRank = (other).getValue();
@@ -124,4 +138,6 @@ public class Card implements Comparable{
     public int compareTo(Object o) {
         return 0;
     }
+
+
 }

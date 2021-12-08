@@ -82,6 +82,39 @@ public class CompareHands extends ArrayList{
         }
     }
 
+    public String findNameRank(){
+        if (isRoyalFlush()){
+            return "Royal FLush";
+        }
+        else if (isStraightFlush()){
+            return "Straight Flush";
+        }
+        else if (isFourOfAKind()){
+            return "Four of a Kind";
+        }
+        else if (isFullHouse()){
+            return "Full House";
+        }
+        else if (isFlush()){
+            return "Flush";
+        }
+        else if (isStraight()){
+            return "Straight";
+        }
+        else if (isThreeOfAKind()){
+            return "Three of a Kind";
+        }
+        else if (isTwoPair()){
+            return "Two Pair";
+        }
+        else if (isOnePair()){
+            return "One Pair";
+        }
+        else{
+            return "High Card";
+        }
+    }
+
     /**
      * Adds all cards with value 10, 11, 12, 13 and 1 to a new array
      * Check if the new array includes a straight flush which would show that the full hand is a royal flush
@@ -115,7 +148,7 @@ public class CompareHands extends ArrayList{
             for (int i = 0; i < this.combHand.getHand().size(); i++){
                 //Skip objects that are the same
                 if (this.combHand.getHand().get(x) == this.combHand.getHand().get(i));
-                //Check if the suits are the same
+                    //Check if the suits are the same
                 else if (this.combHand.getHand().get(x).suit == this.combHand.getHand().get(i).suit){
                     //If suits are the same : add to arraylist of other cards with same suit
                     temp.add(this.combHand.getHand().get(i));
@@ -136,7 +169,7 @@ public class CompareHands extends ArrayList{
                         }
                     }
                     else {
-                        numInRow = 0;
+                        numInRow = 1;
                     }
                 }
             }
@@ -146,7 +179,7 @@ public class CompareHands extends ArrayList{
     }
 
     /**
-     * Iterates through the hand
+     * Iterates through the hand checking for places where there are four cards of the same value
      * @return true if four cards with the same value are detected
      */
     public boolean isFourOfAKind(){
@@ -185,11 +218,11 @@ public class CompareHands extends ArrayList{
      */
     public boolean isFlush(){
         for (int x = 0; x < this.combHand.getHand().size(); x++){
-            int numSameSuit = 0;
+            int numSameSuit = 1;
             for (int i = 0; i < this.combHand.getHand().size(); i++) {
                 //System.out.println(this.combHand.getHand().get(x).suit + " | " + this.combHand.getHand().get(i).suit);
                 if (this.combHand.getHand().get(x) == this.combHand.getHand().get(i));
-                if (this.combHand.getHand().get(x).suit == this.combHand.getHand().get(i).suit) {
+                else if (this.combHand.getHand().get(x).suit == this.combHand.getHand().get(i).suit) {
                     numSameSuit++;
                     if (numSameSuit >= 5) {
                         return true;
@@ -211,6 +244,7 @@ public class CompareHands extends ArrayList{
             if(x == 6);
             else if (this.combHand.getHand().get(x).value +1 == this.combHand.getHand().get(x+1).value){
                 numInRow ++;
+                System.out.println(numInRow);
                 if (numInRow >=5){
                     return true;
                 }
@@ -218,7 +252,7 @@ public class CompareHands extends ArrayList{
             else if(this.combHand.getHand().get(x).value == this.combHand.getHand().get(x+1).value){
             }
             else if (this.combHand.getHand().get(x).value +1 != this.combHand.getHand().get(x+1).value){
-                numInRow = 0;
+                numInRow = 1;
             }
         }
         return false;
@@ -267,5 +301,8 @@ public class CompareHands extends ArrayList{
             }
         }
         return false;
+    }
+    public String toString() {
+        return this.combHand.toString();
     }
 }
