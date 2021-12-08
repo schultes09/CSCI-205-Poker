@@ -5,16 +5,12 @@ Lewisburg, PA
 Instructor: Prof. Brian King
 Semester: Fall - 2021
 ## Team BDNJ
-David Fink  
-David is a finance major in his junior year here at Bucknell. He is really looking forward to applying skills he learns during this project
-to finance in the future.
-  
-Brad Schultes
-Brad is a computer science engineering and management major in his sophomore year. He is looking forward to working on
-a lot of the backend development on this project
+David Fink is a finance major in his junior year here at Bucknell. He is really looking forward to applying skills he learns during this project to finance in the future.
 
-Nick Johnson  
-Nick is a computer science major in hs sophomore year. He is excited to work on integrating the gui to this project.
+Brad Schultes is a computer science engineering and management major in his sophomore year. He is looking forward to working on a lot of the backend development on this project
+
+Nick Johnston is a computer science major in his sophomore year. He is excited to work on integrating the gui to this project.
+
 ## Project Information
 We created a program that allows a user and a friend to play a poker game on the computer with a visual output of the cards being used in Scenebuilder. In our game the player is able to check their cards and then hide them so that the other player may do the same. Then the players can choose to see the flop, then the turn, and finally the river where the final card is flipped and the winner is displayed.
 ## Package Structure: 
