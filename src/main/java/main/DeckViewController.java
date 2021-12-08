@@ -72,6 +72,11 @@ public class DeckViewController implements Initializable {
     private CompareHands player1Combined;
     private CompareHands player2Combined;
 
+    private Card player1Card1;
+    private Card player1Card2;
+    private Card player2Card1;
+    private Card player2Card2;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -84,8 +89,13 @@ public class DeckViewController implements Initializable {
             e.printStackTrace();
         }
 
-        player1 = new Hand(deckSpecial.dealTopCard(0), deckSpecial.dealTopCard(2));
-        player2 = new Hand(deckSpecial.dealTopCard(1), deckSpecial.dealTopCard(3));
+        Card player1Card1 = deckSpecial.dealTopCard(0);
+        Card player1Card2 = deckSpecial.dealTopCard(2);
+        player1 = new Hand(player1Card1, player1Card2);
+
+        Card player2Card1 = deckSpecial.dealTopCard(1);
+        Card player2Card2 = deckSpecial.dealTopCard(3);
+        player2 = new Hand(player2Card1,player2Card2 );
         table = new Hand(deckSpecial.dealTopCard(5), deckSpecial.dealTopCard(6), deckSpecial.dealTopCard(7), deckSpecial.dealTopCard(9), deckSpecial.dealTopCard(11));
 
 
@@ -166,8 +176,26 @@ public class DeckViewController implements Initializable {
                 textWinner.setText("Player 1 Wins: " + player1Combined.findNameRank());
             }
             else if (player1Combined.findRank() == player2Combined.findRank()){
-                System.out.println("Tie");
-                textWinner.setText("Tie: " + player1Combined.findNameRank());
+                if (player1Combined.findRank() == 9){
+                    if (player1Combined.pairTie() > player2Combined.pairTie()){
+                        textWinner.setText("Player 1 wins with the higher pair");
+                    }
+                    else if (player2Combined.pairTie() > player1Combined.pairTie()){
+                        textWinner.setText("Player 2 wins with the higher pair");
+                    }
+                    else{
+                        if(player1Card1.value > player2Card2.value && player1Card1.value > player2Card1.value){
+                            textWinner.setText("Player 1 wins with high card after a pair");
+                        }
+                        else if(player2Card1.value > player1Card2.value && player2Card1.value > player1Card1.value){
+                            textWinner.setText("Player 2 wins with high card after a pair");
+                        }
+                        else{
+                            textWinner.setText("Tie");
+                        }
+                    }
+                }
+                //textWinner.setText("Tie: " + player1Combined.findNameRank());
             }
             else
             {

@@ -302,6 +302,19 @@ public class CompareHands extends ArrayList{
         }
         return false;
     }
+
+    public int pairTie(){
+        for (int x = 0; x < this.combHand.getHand().size(); x++){
+            for (int i = 0; i< this.combHand.getHand().size(); i++){
+                if(this.combHand.getHand().get(x) == this.combHand.getHand().get(i));
+                else if (this.combHand.getHand().get(x).value == this.combHand.getHand().get(i).value){
+                    return this.combHand.getHand().get(x).value;
+                }
+            }
+        }
+        return 0;
+    }
+
     public String toString() {
         return this.combHand.toString();
     }
