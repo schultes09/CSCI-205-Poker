@@ -69,6 +69,12 @@ public class DeckViewController implements Initializable {
     private Hand player2;
     private Hand table;
 
+    private Card player1Card1;
+    private Card player1Card2;
+    private Card player2Card1;
+    private Card player2Card2;
+
+
     private CompareHands player1Combined;
     private CompareHands player2Combined;
 
@@ -166,8 +172,28 @@ public class DeckViewController implements Initializable {
                 textWinner.setText("Player 1 Wins: " + player1Combined.findNameRank());
             }
             else if (player1Combined.findRank() == player2Combined.findRank()){
-                System.out.println("Tie");
-                textWinner.setText("Tie: " + player1Combined.findNameRank());
+                if (player1Combined.findRank() == 9){
+                    if (player1Combined.pairTie() > player2Combined.pairTie()){
+                        textWinner.setText("Player 1 wins with the higher pair");
+                    }
+                    else if (player2Combined.pairTie() > player1Combined.pairTie()){
+                        textWinner.setText("Player 2 wins with the higher pair");
+                    }
+                    else{
+                        if(player1Card1.value > player2Card2.value && player1Card1.value > player2Card1.value){
+                            textWinner.setText("Player 1 wins with high card after a pair");
+                        }
+                        else if(player2Card1.value > player1Card2.value && player2Card1.value > player1Card1.value){
+                            textWinner.setText("Player 2 wins with high card after a pair");
+                        }
+                        else{
+                            textWinner.setText("Tie");
+                        }
+                    }
+                }
+                else{
+                    textWinner.setText("Tie: " + player1Combined.findNameRank());
+                }
             }
             else
             {
@@ -176,6 +202,7 @@ public class DeckViewController implements Initializable {
             }
 
         });
+
     }
 
 }
