@@ -218,11 +218,11 @@ public class CompareHands extends ArrayList{
      */
     public boolean isFlush(){
         for (int x = 0; x < this.combHand.getHand().size(); x++){
-            int numSameSuit = 0;
+            int numSameSuit = 1;
             for (int i = 0; i < this.combHand.getHand().size(); i++) {
                 //System.out.println(this.combHand.getHand().get(x).suit + " | " + this.combHand.getHand().get(i).suit);
                 if (this.combHand.getHand().get(x) == this.combHand.getHand().get(i));
-                if (this.combHand.getHand().get(x).suit == this.combHand.getHand().get(i).suit) {
+                else if (this.combHand.getHand().get(x).suit == this.combHand.getHand().get(i).suit) {
                     numSameSuit++;
                     if (numSameSuit >= 5) {
                         return true;

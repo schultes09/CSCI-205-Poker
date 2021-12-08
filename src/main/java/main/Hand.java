@@ -63,8 +63,7 @@ public class Hand extends ArrayList<Card> {
     }
 
     public Card remove(){
-        Card removed = this.hand.remove(0);
-        return removed;
+        return this.hand.remove(0);
     }
 
     public int getSize(){
