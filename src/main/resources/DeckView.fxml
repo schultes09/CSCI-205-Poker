@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.DeckViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.DeckViewController">
    <children>
       <HBox layoutX="70.0" layoutY="52.0" prefHeight="172.0" prefWidth="448.0" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="25.0">
          <children>
@@ -30,9 +28,9 @@
       <Button fx:id="cardBtn" layoutX="539.0" layoutY="311.0" mnemonicParsing="false" onAction="#nextPlayerCardBtn" text="Player 1" AnchorPane.bottomAnchor="63.8" AnchorPane.leftAnchor="539.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="311.0" />
       <Button fx:id="hide" layoutX="548.0" layoutY="362.0" mnemonicParsing="false" onAction="#hideBtn" text="Hide" AnchorPane.bottomAnchor="12.8" AnchorPane.leftAnchor="548.0" AnchorPane.rightAnchor="27.200000000000003" AnchorPane.topAnchor="362.0" />
       <Button fx:id="playerTwo" layoutX="539.0" layoutY="337.0" mnemonicParsing="false" onAction="#playerTwoBtn" text="Player 2" AnchorPane.bottomAnchor="37.8" AnchorPane.leftAnchor="539.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="337.0" />
-      <Button fx:id="flop" layoutX="550.0" layoutY="183.0" mnemonicParsing="false" onAction="#flopBtn" prefHeight="25.0" prefWidth="46.0" text="Flop1" AnchorPane.bottomAnchor="192.0" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="183.0" />
-      <Button fx:id="flop2" layoutX="550.0" layoutY="208.0" mnemonicParsing="false" onAction="#flop2Btn" text="Flop2" AnchorPane.bottomAnchor="166.8" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="20.4" AnchorPane.topAnchor="208.0" />
-      <Button fx:id="flop3" layoutX="550.0" layoutY="233.0" mnemonicParsing="false" onAction="#flop3Btn" text="Flop3" AnchorPane.bottomAnchor="141.8" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="20.4" AnchorPane.topAnchor="233.0" />
+      <Button fx:id="flop" layoutX="550.0" layoutY="183.0" mnemonicParsing="false" onAction="#flopBtn" prefHeight="25.0" prefWidth="46.0" text="Flop" AnchorPane.bottomAnchor="192.0" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="183.0" />
+      <Button fx:id="flop2" layoutX="550.0" layoutY="208.0" mnemonicParsing="false" onAction="#flop2Btn" text="Turn" AnchorPane.bottomAnchor="166.8" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="20.4" AnchorPane.topAnchor="208.0" />
+      <Button fx:id="flop3" layoutX="550.0" layoutY="233.0" mnemonicParsing="false" onAction="#flop3Btn" text="River" AnchorPane.bottomAnchor="141.8" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="20.4" AnchorPane.topAnchor="233.0" />
       <Label layoutX="14.0" layoutY="245.0" prefHeight="17.0" prefWidth="95.0" text="Winner? " AnchorPane.bottomAnchor="137.8" AnchorPane.leftAnchor="13.999999999999986" AnchorPane.rightAnchor="506.8" AnchorPane.topAnchor="245.0" />
       <Text fx:id="textWinner" layoutX="14.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="95.20000000000005" AnchorPane.bottomAnchor="117.98828125" AnchorPane.leftAnchor="13.600000000000051" AnchorPane.rightAnchor="506.79999999999995" AnchorPane.topAnchor="266.05078125" />
    </children>
