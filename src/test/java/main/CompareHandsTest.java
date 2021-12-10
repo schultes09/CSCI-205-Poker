@@ -53,7 +53,7 @@ class CompareHandsTest {
         CompareHands ch2 = new CompareHands(h1,h3);
         CompareHands ch3 = new CompareHands(h1,h4);
 
-        assertTrue(ch1.isRoyalFlush());
+        assertFalse(ch1.isRoyalFlush());
         assertFalse(ch2.isRoyalFlush());
         assertFalse(ch3.isRoyalFlush());
     }
